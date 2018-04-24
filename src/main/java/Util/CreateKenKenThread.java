@@ -16,12 +16,12 @@ import java.util.concurrent.BlockingQueue;
 
     public void run() {
         KenKen kenKen = new KenKen(size);
-        //findTetrominos(kenKen, UsualRandomList.tetrominoTypeRandomList());
+        //findTetrominos(kenKen, Util.tetrominoTypeRandomList());
             for (byte i = 0; i < size; i++) {
                 for (byte j = 0; j < size; j++) {
                     shape:
                     for (TetrominoType tetrominoType :
-                            UsualRandomList.tetrominoTypeRandomList()) {
+                            Util.tetrominoTypeRandomList()) {
                             if (kenKen.placeTetromino(i, j, tetrominoType)) {
                                 //if (kenKen.isTetromined()) {
                                     kenKen.printTetrominoes();
@@ -62,7 +62,7 @@ import java.util.concurrent.BlockingQueue;
                         if (kenKen.placeTetromino(i,j,type)){
                             System.out.println("------------------------------------------------");
                             kenKen.printTetrominoes();
-                            findTetrominos(new KenKen(kenKen), UsualRandomList.tetrominoTypeRandomList());
+                            findTetrominos(new KenKen(kenKen), Util.tetrominoTypeRandomList());
                             kenKen.unplaceLast();
                             //tetrominoTypes.add(type);
                             //integers.add(rotation);

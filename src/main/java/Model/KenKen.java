@@ -1,6 +1,7 @@
 package Model;
 
 
+import Util.Operation;
 import Util.TetrominoType;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ public class KenKen {
     byte [][] currentData;
     public byte [][] latinSquare;
     short[][] tetrominosMatrix;
-    ArrayList<Tetromino> tetrominos;
+    public ArrayList<Tetromino> tetrominos;
     short tetrominosInBoard;
     public short size;
 
@@ -429,5 +430,58 @@ public class KenKen {
                 if (latinSquare[i][j]==(byte)-1)
                     return new Coordinate(i,j);
         return null;
+    }
+
+    public Tetromino isFullWithOperations() {
+        for (Tetromino tetromino :
+                tetrominos) {
+            if (tetromino.operation==null)
+                return tetromino;
+        }
+        return null;
+    }
+
+    public void generateObjectiveWith(Tetromino tetromino, Operation op) {
+        tetromino.operation=op;
+        switch (op){
+            case EXP:
+                Coordinate coor;
+                coor = tetromino.positions[0];
+                tetromino.objective=latinSquare[coor.x][coor.y]^3;
+                break;
+            case ADD:
+                for (Coordinate coordinate:
+                        tetromino.positions) {
+                    tetromino.objective+=latinSquare[coordinate.x][coordinate.y];
+                }
+                break;
+            case SUB:
+                for (Coordinate coordinate:
+                        tetromino.positions) {
+                    tetromino.objective-=latinSquare[coordinate.x][coordinate.y];
+                }
+                break;
+            case DIV:
+                for (Coordinate coordinate:
+                        tetromino.positions) {
+                    tetromino.objective/=latinSquare[coordinate.x][coordinate.y];
+                }
+                break;
+            case MUL:
+                tetromino.objective=1;
+                for (Coordinate coordinate:
+                        tetromino.positions) {
+                    tetromino.objective*=latinSquare[coordinate.x][coordinate.y];
+                }
+                break;
+            case MOD:
+                Coordinate coordinate1=tetromino.positions[0];
+                Coordinate coordinate2=tetromino.positions[1];
+                tetromino.objective=latinSquare[coordinate1.x][coordinate1.y]%latinSquare[coordinate2.x][coordinate2.y];
+                break;
+
+
+
+        }
     }
 }
