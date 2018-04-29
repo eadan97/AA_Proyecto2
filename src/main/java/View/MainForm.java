@@ -2,7 +2,6 @@ package View;
 
 import Model.Coordinate;
 import Model.KenKen;
-//import Util.CreateKenKenThread;
 import Model.Tetromino;
 import Util.Operation;
 import Util.TetrominoType;
@@ -19,26 +18,57 @@ public class MainForm {
     private JButton generateButton;
     private JPanel contentPane;
     private JSpinner sizeSpinner;
+    private JTable table1;
+    private JButton solveButton;
+    KenKen kenKen;
 
     public MainForm() {
         generateButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                KenKen kenKenQueue=generateRandomKenKen(Byte.parseByte(sizeSpinner.getValue().toString()));
-
-                //generate KenKen
-
+                generateRandomKenKen(Byte.parseByte(sizeSpinner.getValue().toString()));
+            }
+        });
+        solveButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                //Todo:Load kenKen
+                kenKen.clearCurrentData();
+                kenKen=solveKenKen(kenKen);
             }
         });
     }
 
-    public static void main(String[] args){
+    private KenKen solveKenKen(KenKen pKenKen) {
+        Coordinate coordinate=pKenKen.isSolved();
+        if (coordinate==null)
+            return pKenKen;
+        for (Tetromino tetromino:
+             pKenKen.tetrominos) {
+            
 
+        }
+        for (Integer integer:
+                Util.integerRandomList((pKenKen.size<10?1:0),(pKenKen.size<10?pKenKen.size:pKenKen.size-1))) {
+            if(pKenKen.placeNumberInSolution(coordinate.x, coordinate.y, integer)){
+                KenKen ken=solveKenKen(new KenKen(pKenKen));
+                if (ken!=null)
+                    return ken;
+            }
+        }
+        /*for (int k = 0; k < square.length; k++) {
+            if(square[coordinate.x][k]==integer.byteValue()||square[k][coordinate.y]==integer.byteValue())
+                return false;
+        }*/
+        return null;
+    }
+
+
+    public static void main(String[] args){
         JFrame frame = new JFrame("Useless count");
         frame.setContentPane(new MainForm().contentPane);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-
+        frame.setSize(500,500);
     }
 
     private void createUIComponents() {
@@ -47,7 +77,7 @@ public class MainForm {
     }
 
     public KenKen generateRandomKenKen(byte size){
-        KenKen kenKen = new KenKen(size);
+        kenKen = new KenKen(size);
         boolean shape=true, latin=true;
         //findTetrominos(kenKen, Util.tetrominoTypeRandomList());
         /*for (byte i = 0; i < size; i++) {
@@ -69,10 +99,10 @@ public class MainForm {
                 }*/
                 /*Iterator<Integer> integerIterator=Util.integerRandomList((size<10?1:0),(size<10?size:size-1)).iterator();
                 if(!kenKen.isLatinSquared())
-                    while(integerIterator.hasNext()&&!kenKen.placeNumber(i,j,integerIterator.next()));*/
+                    while(integerIterator.hasNext()&&!kenKen.placeNumberInLatinSquare(i,j,integerIterator.next()));*/
                 /*for (Integer integer:
                         Util.integerRandomList((size<10?1:0),(size<10?size:size-1)))
-                    if(kenKen.placeNumber(i,j,integer)) {
+                    if(kenKen.placeNumberInLatinSquare(i,j,integer)) {
                         if (kenKen.isLatinSquared())
                             latin = false;
                         break;
@@ -127,7 +157,7 @@ public class MainForm {
             return kenKen;
         for (Integer integer:
              Util.integerRandomList((kenKen.size<10?1:0),(kenKen.size<10?kenKen.size:kenKen.size-1))) {
-            if(kenKen.placeNumber(coordinate.x, coordinate.y, integer)){
+            if(kenKen.placeNumberInLatinSquare(coordinate.x, coordinate.y, integer)){
                 KenKen ken=generateLatinSquare(new KenKen(kenKen));
                 if (ken!=null)
                     return ken;
