@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class KenKen {
     public byte [][] currentData;
     public byte [][] latinSquare;
-    short[][] tetrominosMatrix;
+    public short[][] tetrominosMatrix;
     public ArrayList<Tetromino> tetrominos;
     short tetrominosInBoard;
     public short size;
@@ -423,6 +423,7 @@ public class KenKen {
         latinSquare[i][j]=integer.byteValue();
         return true;
     }
+
     public boolean placeNumberInSolution(byte i, byte j, Integer integer) {
         for (int k = 0; k < size; k++) {
             if(currentData[i][k]==integer.byteValue()||currentData[k][j]==integer.byteValue())
@@ -508,4 +509,30 @@ public class KenKen {
                     return new Coordinate(i,j);
         return null;
     }
+
+    public void printSquare() {
+        //System.out.println("- Printing Latin Square -");
+        for (int i = 0; i < this.latinSquare.length ; i++)
+        {
+            for (int j = 0 ; j < latinSquare[0].length ; j++)
+            {
+                System.out.print(latinSquare[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+    public void printCurrentData() {
+        //System.out.println("- Printing Latin Square -");
+        for (int i = 0; i < this.currentData.length ; i++)
+        {
+            for (int j = 0 ; j < currentData[0].length ; j++)
+            {
+                System.out.print(currentData[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+
 }

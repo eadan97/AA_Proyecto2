@@ -14,4 +14,26 @@ public class Tetromino {
         this.positions = positions;
     }
 
+    public char getOperation(){
+        if (operation == Operation.ADD)
+            return '+';
+
+        if (operation == Operation.SUB)
+            return '-';
+
+        if (operation == Operation.MUL)
+            return 'x';
+
+        if (operation == Operation.DIV)
+            return '/';
+
+        if (operation == Operation.MOD)
+            return '%';
+
+        if (operation == Operation.EXP)
+            return '^';
+
+        return 0;
+    }
+
 }
