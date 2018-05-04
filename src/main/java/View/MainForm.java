@@ -8,6 +8,7 @@ import Util.TetrominoType;
 import Util.Util;
 import com.sun.jmx.snmp.agent.SnmpMibAgent;
 import com.sun.org.apache.bcel.internal.generic.SWITCH;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -29,6 +30,9 @@ public class MainForm {
     private JPanel kenkenPanel;
     private JButton btnLoad;
     private JButton btnSave;
+    private JPanel solutionPanel;
+    private JLabel lblThreads;
+    private JSpinner threadSpinner;
     KenKen kenKen;
     ThreadPoolExecutor executor;
     boolean foundSolution;
@@ -38,99 +42,8 @@ public class MainForm {
                 generateRandomKenKen(Byte.parseByte(sizeSpinner.getValue().toString()));
 
                 int kkSize = (Integer)sizeSpinner.getValue();
-                byte byteKkSize = (byte)kkSize;
-                System.out.println("Tetrominos");
-                kenKen.printTetrominoes();
-                System.out.println("Latin Square");
-                kenKen.printSquare();
-                System.out.println("Current Data");
-                kenKen.printCurrentData();
-
-                int realSize = kkSize * kkSize;
-                System.out.println("Generating a KenKen of size: " + realSize);
-
-                JLabel labels[] = new JLabel[realSize];
-                JLabel smallLabels[] = new JLabel[kenKen.tetrominos.size()];
-                placeSmallLabels(smallLabels);
-
-                setUpPanel(kkSize);
-
-                int counter = 0;
-                int x = 100;
-                int y = 10;
-
-                int cursor = 0; //ayuda a insertar en lista de tetrominos grande
-                int[] tetros = new int[realSize];
-                for (int n = 0; n < kenKen.tetrominosMatrix.length ; n++)
-                {
-                    for (int m = 0 ; m < kenKen.tetrominosMatrix[n].length ; m++)
-                    {
-                        tetros[cursor] = kenKen.tetrominosMatrix[n][m];
-                        cursor++;
-                    }
-                }
-
-                int iterator = 0; //ayuda a iterar sobre la lista grande
-
-                int isPlacedHelper = 0; //Coloca los que ya tienen
-                int[] isPlaced = new int[kenKen.tetrominos.size()];
-
-                int currentTetrominoLabel = 0; //itera sobre botones
-                //PLACING ITERATION
-                for (int i = 0; i < labels.length ; i++)
-                {
-                    int indicator = kkSize;
-
-                    //"lbl" + 1
-                    JLabel currentLabel = new JLabel(" ");
-                    currentLabel.setBounds(x , y , 50 , 50);
-
-                    currentLabel.setLayout(new OverlayLayout(currentLabel));
-
-                    JLabel small = smallLabels[currentTetrominoLabel];
-
-                    x += 100;
-                    counter++;
-
-                    //System.out.println("Indicator: " + indicator + " y " + "Counter: " + counter);
-                    if (counter == indicator)
-                    {
-                        //System.out.println("Cambio de línea");
-                        x = 100;
-                        y+= 100;
-                        counter = 0;
-                    }
-
-                    setUpLabel(currentLabel , i);
-                    //System.out.println("A new label has been created. ID: " + i);
-                    labels[i] = currentLabel;
-
-                    int currentTetro = tetros[iterator];
-                    System.out.println("Current Cage: " + currentTetro + " , " + "Is contained? " + containsNumber(isPlaced,currentTetro));
-                    if (!containsNumber(isPlaced , currentTetro))
-                    {
-                        System.out.println("ADDED: " + currentTetro);
-                        isPlaced[isPlacedHelper] = currentTetro; //add it
-                        currentLabel.add(small); //Pasar de label
-                        isPlacedHelper++; //Colocar en ya colocados
-                        iterator++; //Tetros
-                        if (currentTetrominoLabel < smallLabels.length - 1)
-                            currentTetrominoLabel++;
-                    }
-
-                    else
-                        {
-                            iterator++;
-                        }
-
-
-                    kenkenPanel.add(currentLabel);
-                }
-
-                paintKenKen(labels);
-
-                kenkenPanel.validate();
-                kenkenPanel.repaint();
+                int[] valuesDeffault = new int[kkSize*kkSize];
+                drawKenKen(kkSize , kenKen , kenkenPanel , valuesDeffault);
             }
         });
 
@@ -143,10 +56,123 @@ public class MainForm {
 
                 executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(cantidadHilos);
                 kenKen= solveKenKen(kenKen);
+                if (kenKen.equals(null))
+                {
+                    System.out.println("I AM NULL!");
+                }
                 kenKen.printSolution();
+
+                int index = 0;
+                int[] solution = new int[kenKen.currentData.length *kenKen.currentData.length];
+                for (int i = 0; i < kenKen.currentData.length ; i++)
+                {
+                    for (int j = 0 ; j < kenKen.currentData[i].length ; j++)
+                    {
+                        solution[index] = kenKen.currentData[i][j];
+                        index++;
+                    }
+                }
+                drawKenKen((int)kenKen.size , kenKen , solutionPanel , solution);
 
             }
         });
+    }
+
+    public void drawKenKen(int kkSize , KenKen kenKen , JPanel kenkenPanel , int[] values)
+    {
+        System.out.println("Tetrominos");
+        kenKen.printTetrominoes();
+        System.out.println("Latin Square");
+        kenKen.printSquare();
+        System.out.println("Current Data");
+        kenKen.printCurrentData();
+
+        int realSize = kkSize * kkSize;
+        System.out.println("Generating a KenKen of size: " + realSize);
+
+        JLabel labels[] = new JLabel[realSize];
+        JLabel smallLabels[] = new JLabel[kenKen.tetrominos.size()];
+        placeSmallLabels(smallLabels);
+
+        setUpPanel(kkSize , kenkenPanel);
+
+        int counter = 0;
+        int x = 100;
+        int y = 10;
+
+        int cursor = 0; //ayuda a insertar en lista de tetrominos grande
+        int[] tetros = new int[realSize];
+        for (int n = 0; n < kenKen.tetrominosMatrix.length ; n++)
+        {
+            for (int m = 0 ; m < kenKen.tetrominosMatrix[n].length ; m++)
+            {
+                tetros[cursor] = kenKen.tetrominosMatrix[n][m];
+                cursor++;
+            }
+        }
+
+        int iterator = 0; //ayuda a iterar sobre la lista grande
+
+        int isPlacedHelper = 0; //Coloca los que ya tienen
+        int[] isPlaced = new int[kenKen.tetrominos.size()];
+
+        int currentTetrominoLabel = 0; //itera sobre botones
+        //PLACING ITERATION
+        for (int i = 0; i < labels.length ; i++)
+        {
+            int indicator = kkSize;
+
+            //"lbl" + 1
+            JLabel currentLabel = new JLabel(" ");
+            currentLabel.setBounds(x , y , 50 , 50);
+
+            currentLabel.setLayout(new OverlayLayout(currentLabel));
+
+            JLabel small = smallLabels[currentTetrominoLabel];
+
+            x += 100;
+            counter++;
+
+            //System.out.println("Indicator: " + indicator + " y " + "Counter: " + counter);
+            if (counter == indicator)
+            {
+                //System.out.println("Cambio de línea");
+                x = 100;
+                y+= 100;
+                counter = 0;
+            }
+
+            setUpLabel(currentLabel , values[i]);
+            //System.out.println("A new label has been created. ID: " + i);
+            labels[i] = currentLabel;
+
+            int currentTetro = tetros[iterator];
+            System.out.println("Current Cage: " + currentTetro + " , " + "Is contained? " + containsNumber(isPlaced,currentTetro));
+            if (!containsNumber(isPlaced , currentTetro))
+            {
+                System.out.println("ADDED: " + currentTetro);
+                isPlaced[isPlacedHelper] = currentTetro; //add it
+                currentLabel.add(small); //Pasar de label
+                isPlacedHelper++; //Colocar en ya colocados
+                iterator++; //Tetros
+                if (currentTetrominoLabel < smallLabels.length - 1)
+                    currentTetrominoLabel++;
+            }
+
+            else
+            {
+                iterator++;
+            }
+
+
+            kenkenPanel.add(currentLabel);
+        }
+
+        paintKenKen(labels);
+
+        kenkenPanel.validate();
+        kenkenPanel.repaint();
+
     }
 
     public void printLista(int[] lista)
@@ -156,18 +182,19 @@ public class MainForm {
             System.out.println(lista[i]);
         }
     }
+
     public void setUpLabel(JLabel currentLabel , int id)
     {
         Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
         currentLabel.setOpaque(true);
         currentLabel.setBorder(border);
-        currentLabel.setText(" "); //"id:" + id
+        currentLabel.setText("" + id); //"id:" + id
         currentLabel.setVerticalAlignment(SwingConstants.CENTER);
         currentLabel.setHorizontalAlignment(SwingConstants.CENTER);
         currentLabel.setBackground(Color.WHITE);
     }
 
-    public void setUpPanel(int kkSize)
+    public void setUpPanel(int kkSize , JPanel kenkenPanel)
     {
         kenkenPanel.setLayout(new GridLayout(kkSize , kkSize));
         kenkenPanel.setSize(kkSize * 50, kkSize * 50);
