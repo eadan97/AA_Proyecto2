@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="360c6be4-147d-4b2e-bbef-50df8bccac9e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/KenKen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/KenKen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/MainForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/MainForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/MainForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/MainForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/MainForm$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MainForm$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/MainForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/View/MainForm.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -26,24 +23,13 @@
       <file leaf-file-name="MainForm.java" pinned="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/View/MainForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="44" column="34" lean-forward="true" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
+            <state relative-caret-position="121">
+              <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#626#837#0" expanded="true" />
-                <element signature="e#836#837#0" expanded="true" />
-                <element signature="e#911#1123#0" expanded="true" />
-                <element signature="e#1122#1123#0" expanded="true" />
-                <element signature="method#main#0;class#MainForm#0" />
                 <element signature="method#createUIComponents#0;class#MainForm#0" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainForm.form" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/View/MainForm.form">
-          <provider selected="true" editor-type-id="ui-designer" />
         </entry>
       </file>
       <file leaf-file-name="RandomList.java" pinned="false" current-in-tab="false">
@@ -92,7 +78,7 @@
       <file leaf-file-name="KenKen.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/KenKen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
+            <state relative-caret-position="7072">
               <caret line="425" column="19" selection-start-line="425" selection-start-column="19" selection-end-line="425" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -105,7 +91,7 @@
       <file leaf-file-name="Tetromino.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/Tetromino.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="255">
               <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -178,7 +164,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="20" />
     <option name="y" value="141" />
     <option name="width" value="1346" />
@@ -189,6 +175,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -242,24 +231,12 @@
               <item name="Proyecto2" type="b2602c69:ProjectViewProjectNode" />
               <item name="AA_Proyecto2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
-              <item name="MainForm" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="Proyecto2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AA_Proyecto2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -376,11 +353,13 @@
       <workItem from="1524537827418" duration="6074000" />
       <workItem from="1524546798037" duration="6383000" />
       <workItem from="1524977948572" duration="1833000" />
+      <workItem from="1525409784946" duration="17000" />
+      <workItem from="1525409832517" duration="469000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76417000" />
+    <option name="totallyTimeSpent" value="76903000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -399,20 +378,20 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.47564936" visible="true" weight="0.28517398" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4724026" visible="true" weight="0.29425114" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32954547" />
       <window_info id="Learn" order="2" />
-      <window_info id="Structure" order="1" sideWeight="0.52435064" side_tool="true" visible="true" weight="0.28517398" />
+      <window_info active="true" id="Structure" order="1" sideWeight="0.5275974" side_tool="true" visible="true" weight="0.29425114" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39935064" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32954547" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32954547" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32954547" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.32954547" />
@@ -501,6 +480,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Tetromino.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/RandomList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -568,12 +557,6 @@
         <state relative-caret-position="255">
           <caret line="20" column="78" selection-start-line="20" selection-start-column="78" selection-end-line="20" selection-end-column="78" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#626#837#0" expanded="true" />
-            <element signature="e#836#837#0" expanded="true" />
-            <element signature="e#911#1123#0" expanded="true" />
-            <element signature="e#1122#1123#0" expanded="true" />
-            <element signature="method#main#0;class#MainForm#0" />
             <element signature="method#createUIComponents#0;class#MainForm#0" />
           </folding>
         </state>
@@ -583,9 +566,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="5" lean-forward="true" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -660,12 +640,6 @@
         <state relative-caret-position="153">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#626#837#0" expanded="true" />
-            <element signature="e#836#837#0" expanded="true" />
-            <element signature="e#911#1123#0" expanded="true" />
-            <element signature="e#1122#1123#0" expanded="true" />
-            <element signature="method#main#0;class#MainForm#0" />
             <element signature="method#createUIComponents#0;class#MainForm#0" />
           </folding>
         </state>
@@ -711,12 +685,6 @@
         <state relative-caret-position="153">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#626#837#0" expanded="true" />
-            <element signature="e#836#837#0" expanded="true" />
-            <element signature="e#911#1123#0" expanded="true" />
-            <element signature="e#1122#1123#0" expanded="true" />
-            <element signature="method#main#0;class#MainForm#0" />
             <element signature="method#createUIComponents#0;class#MainForm#0" />
           </folding>
         </state>
@@ -762,12 +730,6 @@
         <state relative-caret-position="153">
           <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#626#837#0" expanded="true" />
-            <element signature="e#836#837#0" expanded="true" />
-            <element signature="e#911#1123#0" expanded="true" />
-            <element signature="e#1122#1123#0" expanded="true" />
-            <element signature="method#main#0;class#MainForm#0" />
             <element signature="method#createUIComponents#0;class#MainForm#0" />
           </folding>
         </state>
@@ -799,12 +761,6 @@
         <state relative-caret-position="85">
           <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#626#837#0" expanded="true" />
-            <element signature="e#836#837#0" expanded="true" />
-            <element signature="e#911#1123#0" expanded="true" />
-            <element signature="e#1122#1123#0" expanded="true" />
-            <element signature="method#main#0;class#MainForm#0" />
             <element signature="method#createUIComponents#0;class#MainForm#0" />
           </folding>
         </state>
@@ -901,9 +857,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="15" lean-forward="true" selection-start-column="15" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -914,12 +867,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/MainForm.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/Tetromino.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
+        <state relative-caret-position="255">
           <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -929,7 +879,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/KenKen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
+        <state relative-caret-position="7072">
           <caret line="425" column="19" selection-start-line="425" selection-start-column="19" selection-end-line="425" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -940,15 +890,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/View/MainForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="44" column="34" lean-forward="true" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
+        <state relative-caret-position="121">
+          <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#626#837#0" expanded="true" />
-            <element signature="e#836#837#0" expanded="true" />
-            <element signature="e#911#1123#0" expanded="true" />
-            <element signature="e#1122#1123#0" expanded="true" />
-            <element signature="method#main#0;class#MainForm#0" />
             <element signature="method#createUIComponents#0;class#MainForm#0" />
           </folding>
         </state>

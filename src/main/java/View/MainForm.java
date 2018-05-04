@@ -10,6 +10,7 @@ import Util.Util;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.*;
 
 public class MainForm {
     private JMenuBar jMenuBar ;
@@ -21,7 +22,8 @@ public class MainForm {
     private JTable table1;
     private JButton solveButton;
     KenKen kenKen;
-
+    ThreadPoolExecutor executor;
+    boolean foundSolution;
     public MainForm() {
         generateButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -31,8 +33,14 @@ public class MainForm {
         solveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //Todo:Load kenKen
+                //TODO: leer cantidad de hilos
+                int cantidadHilos=10;
                 kenKen.clearCurrentData();
-                kenKen=solveKenKen(kenKen);
+
+                executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(cantidadHilos);
+                kenKen= solveKenKen(kenKen);
+
+
             }
         });
     }
@@ -41,15 +49,23 @@ public class MainForm {
         Coordinate coordinate=pKenKen.isSolved();
         if (coordinate==null)
             return pKenKen;
-        for (Tetromino tetromino:
-             pKenKen.tetrominos) {
-            
-
-        }
         for (Integer integer:
                 Util.integerRandomList((pKenKen.size<10?1:0),(pKenKen.size<10?pKenKen.size:pKenKen.size-1))) {
             if(pKenKen.placeNumberInSolution(coordinate.x, coordinate.y, integer)){
-                KenKen ken=solveKenKen(new KenKen(pKenKen));
+                KenKen ken= null;
+                System.out.println(Thread.currentThread().getId());
+                if (executor.getActiveCount()<executor.getCorePoolSize()){
+                    Future<KenKen> kenKenFuture=executor.submit(()-> solveKenKen(new KenKen(pKenKen)));
+                    try {
+                        ken = kenKenFuture.get();
+                    } catch (InterruptedException | ExecutionException e) {
+                        e.printStackTrace();
+                    }
+
+                }else{
+                    ken =solveKenKen(new KenKen(pKenKen));
+                }
+
                 if (ken!=null)
                     return ken;
             }
@@ -131,8 +147,7 @@ public class MainForm {
             Operation operation = Util.randomOperationFour();
             kenKen.generateObjectiveWith(tetromino, operation);
         }
-        KenKen ken=generateOperations(new KenKen(kenKen));
-        return ken;
+        return generateOperations(new KenKen(kenKen));
 
     }
 
