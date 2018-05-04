@@ -7,7 +7,6 @@
     <list default="true" id="360c6be4-147d-4b2e-bbef-50df8bccac9e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/KenKen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/KenKen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Util/Util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/MainForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/MainForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Model/Coordinate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/Coordinate.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Model/KenKen$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Model/KenKen$1.class" afterDir="false" />
@@ -33,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainForm.java" pinned="true" current-in-tab="false">
+      <file leaf-file-name="MainForm.java" pinned="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/View/MainForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
+            <state relative-caret-position="155">
+              <caret line="42" column="39" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -66,7 +65,7 @@
       <file leaf-file-name="RandomList.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/RandomList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
+            <state relative-caret-position="17">
               <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
               <folding>
                 <element signature="e#699#700#0" expanded="true" />
@@ -108,11 +107,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KenKen.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="KenKen.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Model/KenKen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="600" column="64" selection-start-line="600" selection-start-column="64" selection-end-line="600" selection-end-column="64" />
+            <state relative-caret-position="-157">
+              <caret line="426" column="19" selection-start-line="426" selection-start-column="19" selection-end-line="426" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#30373#30374#0" expanded="true" />
@@ -140,9 +139,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="JavaFXApplication" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -185,8 +184,9 @@
         <option value="$PROJECT_DIR$/src/main/java/View/MainForm.form" />
         <option value="$PROJECT_DIR$/src/main/java/Util/Util.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/Tetromino.java" />
-        <option value="$PROJECT_DIR$/src/main/java/View/MainForm.java" />
         <option value="$PROJECT_DIR$/src/main/java/Model/KenKen.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Model/SolveRecursiveTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/View/MainForm.java" />
       </list>
     </option>
   </component>
@@ -200,8 +200,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="20" />
-    <option name="y" value="141" />
+    <option name="x" value="-30" />
+    <option name="y" value="-21" />
     <option name="width" value="1346" />
     <option name="height" value="688" />
   </component>
@@ -394,7 +394,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89101000" />
+    <option name="totallyTimeSpent" value="97818000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -414,18 +414,18 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.47027028" visible="true" weight="0.29425114" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4724026" visible="true" weight="0.29425114" />
       <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32954547" />
       <window_info id="Learn" order="2" />
-      <window_info id="Structure" order="1" sideWeight="0.5297297" side_tool="true" visible="true" weight="0.29425114" />
+      <window_info id="Structure" order="1" sideWeight="0.5275974" side_tool="true" visible="true" weight="0.29425114" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39935064" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39935064" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32954547" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -443,12 +443,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/View/MainForm.java</url>
-          <line>43</line>
+          <line>45</line>
           <properties />
           <option name="timeStamp" value="135" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="136" />
+      <option name="time" value="142" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -458,11 +458,17 @@
         <watch expression="pKenKen.tetrominos.get(0).positions" />
         <watch expression="pKenKen.latinSquare" />
         <watch expression="latinSquare[coordinate.x][coordinate.y]" language="JAVA" />
+        <watch expression="future.get()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>future.get()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>latinSquare[coordinate.x][coordinate.y]</expression-string>
         <language-id>JAVA</language-id>
@@ -508,39 +514,9 @@
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>((KenKen)queue.toArray()[0]).isSamePentominoArray((KenKen)queue.toArray()[3])</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/Tetromino.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/RandomList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="26" />
-          <folding>
-            <element signature="e#699#700#0" expanded="true" />
-            <element signature="e#729#730#0" expanded="true" />
-            <element signature="e#952#953#0" expanded="true" />
-            <element signature="e#1007#1008#0" expanded="true" />
-            <element signature="e#1222#1223#0" expanded="true" />
-            <element signature="e#1295#1296#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Util/Util.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -830,21 +806,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Model/RandomList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
-          <folding>
-            <element signature="e#699#700#0" expanded="true" />
-            <element signature="e#729#730#0" expanded="true" />
-            <element signature="e#952#953#0" expanded="true" />
-            <element signature="e#1007#1008#0" expanded="true" />
-            <element signature="e#1222#1223#0" expanded="true" />
-            <element signature="e#1295#1296#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Util/MarshallerUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -911,22 +872,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/View/MainForm.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/src.zip!/java/util/Collection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="115">
+          <caret line="560" column="27" selection-start-line="560" selection-start-column="27" selection-end-line="560" selection-end-column="27" />
+          <folding>
+            <element signature="e#26270#26271#0" expanded="true" />
+            <element signature="e#26326#26327#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Model/KenKen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="600" column="64" selection-start-line="600" selection-start-column="64" selection-end-line="600" selection-end-column="64" />
+        <state relative-caret-position="-157">
+          <caret line="426" column="19" selection-start-line="426" selection-start-column="19" selection-end-line="426" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#30373#30374#0" expanded="true" />
             <element signature="e#30421#30422#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/SolveRecursiveTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="36" column="20" lean-forward="true" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#442#443#0" expanded="true" />
+            <element signature="e#480#481#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Model/RandomList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
+          <folding>
+            <element signature="e#699#700#0" expanded="true" />
+            <element signature="e#729#730#0" expanded="true" />
+            <element signature="e#952#953#0" expanded="true" />
+            <element signature="e#1007#1008#0" expanded="true" />
+            <element signature="e#1222#1223#0" expanded="true" />
+            <element signature="e#1295#1296#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/View/MainForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="42" column="39" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
         </state>
       </provider>
     </entry>

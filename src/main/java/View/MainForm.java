@@ -10,6 +10,8 @@ import Util.Util;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.*;
 
 public class MainForm {
@@ -49,27 +51,38 @@ public class MainForm {
         Tetromino tetromino=pKenKen.isSolved();
         if (tetromino==null)
             return pKenKen;
+
+        List<Future<KenKen>> futures = new ArrayList<>();
         for (Integer integer:
                 Util.integerList((pKenKen.size<10?1:0),(pKenKen.size<10?pKenKen.size:pKenKen.size-1))) {
             if(pKenKen.placeNumberInSolution(tetromino, integer)){
                 KenKen ken= null;
                 //System.out.println(Thread.currentThread().getId());
-                /*if (executor.getActiveCount()<executor.getCorePoolSize()){
-                    Future<KenKen> kenKenFuture=executor.submit(()-> solveKenKen(new KenKen(pKenKen)));
-                    try {
+                if (executor.getActiveCount()<executor.getCorePoolSize()){
+                    futures.add(executor.submit(() -> solveKenKen(new KenKen(pKenKen))));
+                    /*try {
                         ken = kenKenFuture.get();
                     } catch (InterruptedException | ExecutionException e) {
                         e.printStackTrace();
-                    }
+                    }*/
 
-                }else{*/
+                }else{
                     ken=solveKenKen(new KenKen(pKenKen));
-                //}
+                }
 
                 if (ken!=null)
                     return ken;
                 pKenKen.removeLastMove();
             }
+
+        }
+        for (Future<KenKen> future :
+                futures) {
+            try {
+                KenKen kkf=future.get();
+                if (kkf != null)
+                    return kkf;
+            }catch (Exception e){}
         }
         /*for (int k = 0; k < square.length; k++) {
             if(square[coordinate.x][k]==integer.byteValue()||square[k][coordinate.y]==integer.byteValue())

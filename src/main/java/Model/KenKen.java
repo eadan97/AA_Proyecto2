@@ -424,14 +424,6 @@ public class KenKen {
         latinSquare[i][j]=integer.byteValue();
         return true;
     }
-    public boolean placeNumberInSolution(byte i, byte j, Integer integer) {
-        for (int k = 0; k < size; k++) {
-            if(currentData[i][k]==integer.byteValue()||currentData[k][j]==integer.byteValue())
-                return false;
-        }
-        currentData[i][j]=integer.byteValue();
-        return true;
-    }
     public boolean placeNumberInSolution(Tetromino tetromino, Integer integer) {
         int objectiveVal=tetromino.operation==Operation.MUL?1:0;
         for (Coordinate coordinate :
