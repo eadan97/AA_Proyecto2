@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class KenKen {
     public byte [][] currentData;
     public byte [][] latinSquare;
-    short[][] tetrominosMatrix;
+    public short[][] tetrominosMatrix;
     public ArrayList<Tetromino> tetrominos;
     short tetrominosInBoard;
     public short size;
@@ -638,4 +638,30 @@ public class KenKen {
     public void removeLastMove() {
         currentData[lastMove.x][lastMove.y]=-1;
     }
+
+    public void printSquare() {
+        //System.out.println("- Printing Latin Square -");
+        for (int i = 0; i < this.latinSquare.length ; i++)
+        {
+            for (int j = 0 ; j < latinSquare[0].length ; j++)
+            {
+                System.out.print(latinSquare[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+    public void printCurrentData() {
+        //System.out.println("- Printing Latin Square -");
+        for (int i = 0; i < this.currentData.length ; i++)
+        {
+            for (int j = 0 ; j < currentData[0].length ; j++)
+            {
+                System.out.print(currentData[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+
 }
