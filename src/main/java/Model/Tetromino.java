@@ -3,11 +3,22 @@ package Model;
 import Util.Operation;
 import Util.TetrominoType;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Tetromino {
+    @XmlElement
     public TetrominoType type;
+    @XmlElement
     public Coordinate[] positions;
+    @XmlElement
     public Operation operation;
+    @XmlElement
     public int objective;
+
+    public Tetromino() {
+    }
 
     public Tetromino(TetrominoType type, Coordinate[] positions) {
         this.type = type;

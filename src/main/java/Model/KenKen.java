@@ -4,15 +4,21 @@ package Model;
 import Util.Operation;
 import Util.TetrominoType;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+@XmlRootElement
 public class KenKen {
+
     public byte [][] currentData;
     public byte [][] latinSquare;
     public short[][] tetrominosMatrix;
+    @XmlElement
     public ArrayList<Tetromino> tetrominos;
     short tetrominosInBoard;
+    @XmlElement
     public short size;
     private Coordinate lastMove;
 
@@ -26,6 +32,9 @@ public class KenKen {
         this.tetrominosMatrix =new short[size][size];
         this.tetrominosInBoard =0;
         this.tetrominos=new ArrayList<Tetromino>();
+    }
+
+    public KenKen() {
     }
 
     public KenKen(KenKen kenKen) {

@@ -4,7 +4,7 @@ import javax.xml.bind.*;
 import java.io.File;
 
 public class MarshallerUtil {
-    public void save(String dir, Object object) {
+    public static void save(String dir, Object object) {
 
         try {
             JAXBContext context = JAXBContext.newInstance(
@@ -23,10 +23,10 @@ public class MarshallerUtil {
 
     }
 
-    public Object load(String dir, Object object) {
+    public static Object load(String dir, Class pclass) {
 
         try {
-            JAXBContext context = JAXBContext.newInstance(object.getClass() );
+            JAXBContext context = JAXBContext.newInstance(pclass );
             Unmarshaller unmarshaller = context.createUnmarshaller();
             return unmarshaller.unmarshal(
                     new File(dir) );

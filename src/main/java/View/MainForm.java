@@ -6,12 +6,14 @@ import Model.Tetromino;
 import Util.Operation;
 import Util.TetrominoType;
 import Util.Util;
+import Util.MarshallerUtil;
 import com.sun.jmx.snmp.agent.SnmpMibAgent;
 import com.sun.org.apache.bcel.internal.generic.SWITCH;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.xml.bind.Marshaller;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,9 +51,7 @@ public class MainForm {
 
         solveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //Todo:Load kenKen
-                //TODO: leer cantidad de hilos
-                int cantidadHilos=10;
+                int cantidadHilos=(Integer)threadSpinner.getValue();;
                 kenKen.clearCurrentData();
 
                 executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(cantidadHilos);
@@ -74,6 +74,18 @@ public class MainForm {
                 }
                 drawKenKen((int)kenKen.size , kenKen , solutionPanel , solution);
 
+            }
+        });
+        btnSave.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MarshallerUtil.save("savedTetromino.st", kenKen);
+            }
+        });
+        btnLoad.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                kenKen= (KenKen) MarshallerUtil.load("savedTetromino.st", KenKen.class);
             }
         });
     }
