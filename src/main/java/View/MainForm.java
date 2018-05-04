@@ -39,22 +39,22 @@ public class MainForm {
 
                 executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(cantidadHilos);
                 kenKen= solveKenKen(kenKen);
-
+                kenKen.printSolution();
 
             }
         });
     }
 
     private KenKen solveKenKen(KenKen pKenKen) {
-        Coordinate coordinate=pKenKen.isSolved();
-        if (coordinate==null)
+        Tetromino tetromino=pKenKen.isSolved();
+        if (tetromino==null)
             return pKenKen;
         for (Integer integer:
-                Util.integerRandomList((pKenKen.size<10?1:0),(pKenKen.size<10?pKenKen.size:pKenKen.size-1))) {
-            if(pKenKen.placeNumberInSolution(coordinate.x, coordinate.y, integer)){
+                Util.integerList((pKenKen.size<10?1:0),(pKenKen.size<10?pKenKen.size:pKenKen.size-1))) {
+            if(pKenKen.placeNumberInSolution(tetromino, integer)){
                 KenKen ken= null;
-                System.out.println(Thread.currentThread().getId());
-                if (executor.getActiveCount()<executor.getCorePoolSize()){
+                //System.out.println(Thread.currentThread().getId());
+                /*if (executor.getActiveCount()<executor.getCorePoolSize()){
                     Future<KenKen> kenKenFuture=executor.submit(()-> solveKenKen(new KenKen(pKenKen)));
                     try {
                         ken = kenKenFuture.get();
@@ -62,12 +62,13 @@ public class MainForm {
                         e.printStackTrace();
                     }
 
-                }else{
-                    ken =solveKenKen(new KenKen(pKenKen));
-                }
+                }else{*/
+                    ken=solveKenKen(new KenKen(pKenKen));
+                //}
 
                 if (ken!=null)
                     return ken;
+                pKenKen.removeLastMove();
             }
         }
         /*for (int k = 0; k < square.length; k++) {
@@ -144,8 +145,11 @@ public class MainForm {
             kenKen.generateObjectiveWith(tetromino, Operation.MOD);
         }
         else{
-            Operation operation = Util.randomOperationFour();
-            kenKen.generateObjectiveWith(tetromino, operation);
+            Operation operation;
+            do {
+                operation = Util.randomOperationFour();
+            }while (!kenKen.generateObjectiveWith(tetromino, operation));
+
         }
         return generateOperations(new KenKen(kenKen));
 

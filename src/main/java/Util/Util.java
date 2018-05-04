@@ -22,6 +22,12 @@ public class Util {
             vals[i]=min+i;
         return new RandomList<Integer>(vals);
     }
+    public static Integer[] integerList(int min, int max){
+        Integer[] vals = new Integer[max-min+1];
+        for (int i = 0; i < max-min+1; i++)
+            vals[i]=min+i;
+        return vals;
+    }
 
     public static Operation randomOperationFour() {
         return op4[random.nextInt(4)];

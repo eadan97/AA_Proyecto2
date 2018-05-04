@@ -14,6 +14,7 @@ public class KenKen {
     public ArrayList<Tetromino> tetrominos;
     short tetrominosInBoard;
     public short size;
+    private Coordinate lastMove;
 
 
     public KenKen(byte size) {
@@ -431,6 +432,103 @@ public class KenKen {
         currentData[i][j]=integer.byteValue();
         return true;
     }
+    public boolean placeNumberInSolution(Tetromino tetromino, Integer integer) {
+        int objectiveVal=tetromino.operation==Operation.MUL?1:0;
+        for (Coordinate coordinate :
+                tetromino.positions) {
+            //PODAS
+            if (currentData[coordinate.x][coordinate.y]==-1) {
+                if(coordinate==tetromino.positions[tetromino.positions.length-1])
+                    switch (tetromino.operation){
+                        case ADD:
+                            if(objectiveVal+integer!=tetromino.objective)
+                                return false;
+                            break;
+                        case SUB:
+                            if(objectiveVal-integer!=tetromino.objective)
+                                return false;
+                            break;
+                        case DIV:
+                            if(integer!=0&&objectiveVal/integer!=tetromino.objective)
+                                return false;
+                            break;
+                        case MUL:
+                            if(objectiveVal*integer!=tetromino.objective)
+                                return false;
+                            break;
+                        case MOD:
+                            if(integer!=0&&objectiveVal%integer!=tetromino.objective)
+                                return false;
+                            break;
+                        case EXP:
+                            if(Math.pow(integer,3)!=tetromino.objective)
+                                return false;
+                            break;
+                    }
+                    else {
+                    switch (tetromino.operation){
+                        case ADD:
+                            if(objectiveVal+integer>tetromino.objective)
+                                return false;
+                            break;
+                        case SUB:
+                            if ((coordinate==tetromino.positions[0]&&
+                                    integer<=tetromino.objective)||
+                                    objectiveVal-integer<tetromino.objective)
+                                return false;
+                            break;
+                        case DIV:
+                            if ((coordinate==tetromino.positions[0]&&
+                                    integer<tetromino.objective)||
+                                    objectiveVal/integer<tetromino.objective)
+                                return false;
+                            break;
+                        case MUL:
+                            objectiveVal*=integer;
+                            if(objectiveVal>tetromino.objective)
+                                return false;
+                            break;
+                    }
+
+                }
+                for (int k = 0; k < size; k++) {
+                    if(currentData[k][coordinate.y]==integer.byteValue()||
+                            currentData[coordinate.x][k]==integer.byteValue())
+                        return false;
+                }
+                currentData[coordinate.x][coordinate.y]=integer.byteValue();
+                lastMove=coordinate;
+                return true;
+            }else {
+                switch (tetromino.operation){
+                    case ADD:
+                        objectiveVal+=currentData[coordinate.x][coordinate.y];
+                        break;
+                    case SUB:
+                        if(coordinate==tetromino.positions[0])
+                            objectiveVal=currentData[coordinate.x][coordinate.y];
+                        else
+                            objectiveVal-=currentData[coordinate.x][coordinate.y];
+                        break;
+                    case DIV:
+                        if(coordinate==tetromino.positions[0])
+                            objectiveVal=currentData[coordinate.x][coordinate.y];
+                        else
+                            objectiveVal/=currentData[coordinate.x][coordinate.y];
+                        break;
+                    case MUL:
+                        objectiveVal*=currentData[coordinate.x][coordinate.y];
+                        break;
+                    case MOD:
+                        objectiveVal=currentData[coordinate.x][coordinate.y];
+                        break;
+                }
+            }
+
+        }
+
+        return false;
+    }
 
     public Coordinate isLatinSquared() {
         for (int i = 0; i < size; i++)
@@ -449,13 +547,13 @@ public class KenKen {
         return null;
     }
 
-    public void generateObjectiveWith(Tetromino tetromino, Operation op) {
+    public boolean generateObjectiveWith(Tetromino tetromino, Operation op) {
         tetromino.operation=op;
         switch (op){
             case EXP:
                 Coordinate coor;
                 coor = tetromino.positions[0];
-                tetromino.objective=latinSquare[coor.x][coor.y]^3;
+                tetromino.objective= (int) Math.pow(latinSquare[coor.x][coor.y],3);
                 break;
             case ADD:
                 for (Coordinate coordinate:
@@ -464,16 +562,31 @@ public class KenKen {
                 }
                 break;
             case SUB:
+
                 for (Coordinate coordinate:
                         tetromino.positions) {
-                    tetromino.objective-=latinSquare[coordinate.x][coordinate.y];
+                    if(coordinate==tetromino.positions[0])
+                        tetromino.objective=latinSquare[coordinate.x][coordinate.y];
+                    else
+                        tetromino.objective-=latinSquare[coordinate.x][coordinate.y];
                 }
                 break;
             case DIV:
+                for (Coordinate coordinate :
+                        tetromino.positions) {
+                    if (latinSquare[coordinate.x][coordinate.y]==0)
+                        return false;
+                }
+
                 for (Coordinate coordinate:
                         tetromino.positions) {
-                    tetromino.objective/=latinSquare[coordinate.x][coordinate.y];
+                    if(coordinate==tetromino.positions[0])
+                        tetromino.objective=latinSquare[coordinate.x][coordinate.y];
+                    else
+                        tetromino.objective/=latinSquare[coordinate.x][coordinate.y];
                 }
+                if (tetromino.objective==0)
+                    return false;
                 break;
             case MUL:
                 tetromino.objective=1;
@@ -485,12 +598,15 @@ public class KenKen {
             case MOD:
                 Coordinate coordinate1=tetromino.positions[0];
                 Coordinate coordinate2=tetromino.positions[1];
+                if (latinSquare[coordinate2.x][coordinate2.y]==0)
+                    return false;
                 tetromino.objective=latinSquare[coordinate1.x][coordinate1.y]%latinSquare[coordinate2.x][coordinate2.y];
                 break;
 
 
 
         }
+        return true;
     }
 
     public void clearCurrentData() {
@@ -501,11 +617,33 @@ public class KenKen {
         }
     }
 
-    public Coordinate isSolved() {
-        for (int i = 0; i < size; i++)
+    public Tetromino isSolved() {
+        for (Tetromino tetromino :
+                tetrominos) {
+            for (Coordinate coordinate :
+                    tetromino.positions) {
+                if (currentData[coordinate.x][coordinate.y]==(byte)-1)
+                    return tetromino;
+            }
+        }
+        return null;
+        /*for (int i = 0; i < size; i++)
             for (int j = 0; j < size; j++)
                 if (currentData[i][j]==(byte)-1)
                     return new Coordinate(i,j);
-        return null;
+        return null;*/
+    }
+
+    public void printSolution() {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                System.out.print(currentData[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+
+    public void removeLastMove() {
+        currentData[lastMove.x][lastMove.y]=-1;
     }
 }
